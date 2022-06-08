@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(188, 188, 188);
+}
+
+li {
+  list-style: none;
+  border-bottom: 1px solid rgb(211, 211, 211);
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.main-list {
+  background-color: #fff;
+  margin: 50px 20%;
+}
+
+.main-list > * {
+  padding: 10px;
+}
+
+.inputbox {
+  outline: none;
+  height: 35px;
+  flex-grow: 1;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  font-size: 20px;
+  margin-left: 8px;
+  cursor: default;
+}
+
+input.checkbox {
+  width: 30px;
+  height: 30px;
+}
+
+.dots {
+  font-size: 60px;
+  cursor: move;
+}
+
+.todoTitle {
+  font-size: 22px;
+}
+
+.entersymbol {
+  font-size: 40px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.list li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.clear-button {
+  width: 100%;
+  text-align: center;
+  height: 70px;
+  border: none;
+  font-size: 22px;
+  background-color: rgb(220, 219, 219);
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
