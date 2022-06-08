@@ -1,58 +1,46 @@
-import './index.css'
+import './index.css';
 
-const data = [
+let data = [
   {
-    index: 1,
+    index: 5,
     completed: false,
-    description: "wash dishes",
+    description: 'do some sports'
   },
   {
-    index: 1,
+    index: 2,
     completed: false,
-    description: "wash dishes",
+    description: 'check messages'
   },
   {
-    index: 1,
+    index: 4,
     completed: false,
-    description: "wash dishes",
-  },
-  {
-    index: 1,
-    completed: false,
-    description: "wash dishes",
+    description: 'clean house '
   }, 
+
   {
     index: 1,
     completed: false,
-    description: "wash dishes",
+    description: 'wake up at 6am'
   },
   {
-    index: 1,
+    index: 6,
     completed: false,
-    description: "wash dishes",
+    description: 'take shower'
+  }
+  ,
+  {
+    index: 3,
+    completed: false,
+    description: 'wash dishes'
   },
   {
-    index: 1,
+    index: 7,
     completed: false,
-    description: "wash dishes",
-  },
-  {
-    index: 1,
-    completed: false,
-    description: "wash dishes",
-  },
-  {
-    index: 1,
-    completed: false,
-    description: "wash dishes",
-  },
-  {
-    index: 1,
-    completed: false,
-    description: "wash dishes",
+    description: 'start daily activities'
   }
 ];
 
+data = data.sort((a, b) => a.index - b.index);
 const populateData = () =>{
   const list = document.getElementById('list');
   list.innerHTML='';
@@ -72,7 +60,7 @@ const populateData = () =>{
     li.appendChild(inputelem);
     li.appendChild(span);
     list.appendChild(li);
-  })
+  });
 }
 
 populateData();

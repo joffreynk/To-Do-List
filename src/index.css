@@ -17,8 +17,7 @@ li {
 
 .main-list {
   background-color: #fff;
-  margin: 50px auto;
-  width: 30vw;
+  margin: 50px 20%;
   padding: 10px;
 }
 
@@ -32,6 +31,7 @@ li {
   outline: none;
   font-size: 25px;
   margin-left: 8px;
+  cursor: default;
 }
 
 input.checkbox {
@@ -41,9 +41,17 @@ input.checkbox {
 
 .dots {
   font-size: 60px;
-  cursor: pointer;
+  cursor: move;
 }
 
 .todoTitle {
   font-size: 25px;
+}
+
+.entersymbol {
+  font-size: 40px;
+}
+
+.completed {
+  text-decoration: line-through;
 }
