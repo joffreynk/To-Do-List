@@ -4,53 +4,53 @@ let data = [
   {
     index: 5,
     completed: false,
-    description: 'do some sports'
+    description: 'do some sports',
   },
   {
     index: 2,
     completed: false,
-    description: 'check messages'
+    description: 'check messages',
   },
   {
     index: 4,
     completed: false,
-    description: 'clean house '
+    description: 'clean house ',
   }, 
 
   {
     index: 1,
     completed: false,
-    description: 'wake up at 6am'
+    description: 'wake up at 6am',
   },
   {
     index: 6,
     completed: false,
-    description: 'take shower'
+    description: 'take shower',
   }
   ,
   {
     index: 3,
     completed: false,
-    description: 'wash dishes'
+    description: 'wash dishes',
   },
   {
     index: 7,
     completed: false,
-    description: 'start daily activities'
-  }
+    description: 'start daily activities',
+  },
 ];
 
 data = data.sort((a, b) => a.index - b.index);
-const populateData = () =>{
+const populateData = () => {
   const list = document.getElementById('list');
-  list.innerHTML='';
+  list.innerHTML = '';
   data.forEach((singledata) => {
     const li = document.createElement('li');
     const licheckbox = document.createElement('input');
     const inputelem = document.createElement('input');
     const span = document.createElement('span');
-    span.setAttribute('class', 'dots')
-    span.innerHTML = `&#8285;`
+    span.setAttribute('class', 'dots');
+    span.innerHTML = '&#8285;';
     licheckbox.setAttribute('type', 'checkbox');
     licheckbox.setAttribute('class', 'checkbox');
     inputelem.setAttribute('class', 'inputbox');
@@ -61,6 +61,6 @@ const populateData = () =>{
     li.appendChild(span);
     list.appendChild(li);
   });
-}
+};
 
 populateData();
