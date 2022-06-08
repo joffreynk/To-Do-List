@@ -15,7 +15,7 @@ let data = [
     index: 4,
     completed: false,
     description: 'clean house ',
-  }, 
+  },
   {
     index: 1,
     completed: false,
