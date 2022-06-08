@@ -16,7 +16,6 @@ let data = [
     completed: false,
     description: 'clean house ',
   }, 
-
   {
     index: 1,
     completed: false,
@@ -26,8 +25,7 @@ let data = [
     index: 6,
     completed: false,
     description: 'take shower',
-  }
-  ,
+  },
   {
     index: 3,
     completed: false,
