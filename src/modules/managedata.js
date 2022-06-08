@@ -1,3 +1,4 @@
+// import populateDatap from '../index.js'
 class Todo {
   constructor(){
     this.todos = [];
@@ -45,42 +46,66 @@ class Todo {
   }
 
   getTodos() {
-    return this.todos
+    return this.todos;
+  }
+
+  setTodos (newTodoes) {
+    this.todos = newTodoes;
   }
 }
 
 let todo = new Todo();
+const data = todo.getTodos()
 
 const dots = document.querySelectorAll('.dots');
 const checkbox = document.querySelectorAll('.checkbox');
 const inputfields = document.querySelectorAll('.inputfields');
 
-// inputfields.forEach((field)=>{
-//   field.addEventListener('focus', (e) => {
-//     console.log(e.target);
-//   })
-// })
-
-
-
-dots.forEach(dot=>{
-  dot.addEventListener('click', (e) => {
-    console.log(e.target);
+// const remove = () => {
+  dots.forEach(dot=>{
+    dot.addEventListener('click', (e) => {
+      todo.removeTodo(Number(e.target.classList[0]));
+      // populateData()
+    })
   })
-})
+// }
 
-
-checkbox.forEach(check=>{
-  check.addEventListener('click', (e) => {
-    console.log(e.target);
+// const complete = () => {
+  checkbox.forEach(check=>{
+    check.addEventListener('click', (e) => {
+      todo.complete(Number(e.target.classList[0]));
+      console.log(e.target);
+      // populateData()
+    })
   })
-})
+// }
 
-const inputbox = document.querySelectorAll('.inputbox');
-inputbox.forEach((newTodo) => {
-  newTodo.addEventListener('keydown',(e) => {
-    if(e.which===13)console.log(e.target.classList);
+
+// const addOrEdit = () => {
+  const inputbox = document.querySelectorAll('.inputbox');
+  inputbox.forEach((newTodo) => {
+    newTodo.addEventListener('keydown',(e) => {
+      if (e.which===13){
+        if(Number(e.target.classList[0])){
+          todo.editTodo(Number(e.target.classList[0], e.target.value));
+        }else {
+          todo.addTodo(e.target.value);
+          e.target.value = '';
+        }
+        // populateData();
+      }
+    })
   })
-})
+// }
+
+// const clearComplete = () => {
+  const clear = document.getElementById('clear');
+  clear.addEventListener('click', () => {
+    todo.clearCompleted();
+    // populateData()
+  })
+// }
 
 
+
+// export {todo, clearComplete, addOrEdit, complete, remove, populateData};
