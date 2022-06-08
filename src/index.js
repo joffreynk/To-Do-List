@@ -1,3 +1,5 @@
+import './index.css'
+
 const data = [
   {
     index: 1,
@@ -59,14 +61,17 @@ const populateData = () =>{
     const licheckbox = document.createElement('input');
     const inputelem = document.createElement('input');
     const span = document.createElement('span');
+    span.setAttribute('class', 'dots')
     span.innerHTML = `&#8285;`
-    licheckbox.setAttribute('type', 'checkbox')
-    licheckbox.setAttribute('type', 'checkbox')
+    licheckbox.setAttribute('type', 'checkbox');
+    licheckbox.setAttribute('class', 'checkbox');
+    inputelem.setAttribute('class', 'inputbox');
+    inputelem.setAttribute('type', 'text');
     inputelem.setAttribute('value', singledata.description);
-    li.appendChild(licheckbox)
-    li.appendChild(inputelem)
-    li.appendChild(span)
-    list.appendChild(li)
+    li.appendChild(licheckbox);
+    li.appendChild(inputelem);
+    li.appendChild(span);
+    list.appendChild(li);
   })
 }
 
