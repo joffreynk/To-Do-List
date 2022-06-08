@@ -1,4 +1,6 @@
+// import './modules/managedata.js'
 import './index.css';
+
 
 let data = [
   {
@@ -47,11 +49,11 @@ const populateData = () => {
     const licheckbox = document.createElement('input');
     const inputelem = document.createElement('input');
     const span = document.createElement('span');
-    span.setAttribute('class', 'dots');
+    span.setAttribute('class', `${singledata.index} dots`);
     span.innerHTML = '&#8285;';
     licheckbox.setAttribute('type', 'checkbox');
-    licheckbox.setAttribute('class', 'checkbox');
-    inputelem.setAttribute('class', 'inputbox');
+    licheckbox.setAttribute('class', `${singledata.index} checkbox`);
+    inputelem.setAttribute('class', `${singledata.index} inputfields inputbox`);
     inputelem.setAttribute('type', 'text');
     inputelem.setAttribute('value', singledata.description);
     li.appendChild(licheckbox);
@@ -62,3 +64,4 @@ const populateData = () => {
 };
 
 populateData();
+require('./modules/managedata.js');
