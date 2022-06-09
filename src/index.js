@@ -1,57 +1,10 @@
-// import {todo, clearComplete, addOrEdit, complete, remove, populateData} from './modules/managedata.js';
+import Todo from './modules/managedata.js'
 import './index.css';
 
-let data;
-
-// if (localStorage.getItem('todos') === null || localStorage.getItem('todos') === undefined){
-//   data = [];
-// }else {
-//   todo.setTodos(JSON.parse(localStorage.getItem('todos')));
-//   data = todo.getTodos();
-// }
-
-// let data = [
-//   {
-//     index: 5,
-//     completed: false,
-//     description: 'do some sports',
-//   },
-//   {
-//     index: 2,
-//     completed: false,
-//     description: 'check messages',
-//   },
-//   {
-//     index: 4,
-//     completed: false,
-//     description: 'clean house ',
-//   },
-//   {
-//     index: 1,
-//     completed: false,
-//     description: 'wake up at 6am',
-//   },
-//   {
-//     index: 6,
-//     completed: false,
-//     description: 'take shower',
-//   },
-//   {
-//     index: 3,
-//     completed: false,
-//     description: 'wash dishes',
-//   },
-//   {
-//     index: 7,
-//     completed: false,
-//     description: 'start daily activities',
-//   },
-// ];
-
-// data = todo.getTodos()
-// data = data.sort((a, b) => a.index - b.index);
+let todo = new Todo();
 
 const populateData = () => {
+  const data = todo.getTodos();
   const list = document.getElementById('list');
   list.innerHTML = '';
   data.forEach((singledata) => {
@@ -59,31 +12,64 @@ const populateData = () => {
     const licheckbox = document.createElement('input');
     const inputelem = document.createElement('input');
     const span = document.createElement('span');
-    span.setAttribute('class', `${singledata.index} dots`);
+    const garbage = document.createElement('span');
+    garbage.innerHTML = '&#128465;&#65039;';
+    span.setAttribute('class', `${singledata.index} bullet${singledata.index} rmv dots`);
+    garbage.setAttribute('class', `${singledata.index} bullet${singledata.index} rmv garbage`);
     span.innerHTML = '&#8285;';
+    garbage.classList.add('show');
     licheckbox.setAttribute('type', 'checkbox');
-    // licheckbox.setAttribute('onclick', '() => complete()');
     licheckbox.setAttribute('class', `${singledata.index} checkbox`);
-    inputelem.setAttribute('class', `${singledata.index} inputfields inputbox`);
+    licheckbox.setAttribute('id', `${singledata.index}`);
+    inputelem.setAttribute('class', `${singledata.index} bullet${singledata.index} inputfields inputbox`);
     inputelem.setAttribute('type', 'text');
+    inputelem.setAttribute('value', singledata.description);
     if (singledata.completed===true){
-    inputelem.setAttribute('value', singledata.description);
-    inputelem.setAttribute('class', 'completed');
+    inputelem.classList.toggle('completed');
     }
-    inputelem.setAttribute('value', singledata.description);
     li.appendChild(licheckbox);
     li.appendChild(inputelem);
+    li.appendChild(garbage);
     li.appendChild(span);
     list.appendChild(li);
   });
 };
 
+document.addEventListener('click', event =>{
+  if (event.target.classList.contains('checkbox')) {
+    todo.complete(Number(event.target.classList[0]));
+    populateData();
+  };
 
-require('./modules/managedata.js')
-// populateData();
-// clearComplete();
-// addOrEdit();
-// complete();
-// remove();
+  if (event.target.classList.contains('dots')||event.target.classList.contains('inputfields')) {
+    document.querySelector(`.${event.target.classList[1]}.garbage`).classList.remove('show');
+    document.querySelector(`.${event.target.classList[1]}.dots`).classList.add('show');
+  }
 
-// export {populateData};
+  if (event.target.classList.contains('garbage')) {
+    todo.removeTodo(Number(event.target.classList[0]));
+    populateData();
+  }
+
+  if (event.target.classList.contains('clear-button')) {
+    todo.clearCompleted();
+    populateData();
+  }
+})
+
+document.addEventListener('keypress', event =>{
+  if (event.which === 13){
+     if (event.target.classList.contains('newtodo')){
+      todo.addTodo(event.target.value);
+      event.target.value = '';
+      populateData();
+  }
+
+  if (event.target.classList.contains('inputfields')) {
+    todo.editTodo(Number(event.target.classList[0]), event.target.value);
+    console.log('target index', event.target.classList[0]);
+    console.log('value', event.target.value);
+    populateData();
+  }
+  }
+});
