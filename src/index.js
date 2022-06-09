@@ -76,8 +76,8 @@ document.addEventListener('keypress', (event) => {
 
     if (event.target.classList.contains('inputfields')) {
       todo.editTodo(Number(event.target.classList[0]), event.target.value);
-      populateData();
       localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
+      populateData();
     }
   }
 });
