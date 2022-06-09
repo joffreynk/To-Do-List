@@ -17,23 +17,15 @@ const populateData = () => {
     const span = document.createElement('span');
     const garbage = document.createElement('span');
     garbage.innerHTML = '&#128465;&#65039;';
-    span.setAttribute(
-      'class',
-      `${singledata.index} bullet${singledata.index} rmv dots`
-    );
-    garbage.setAttribute(
-      'class',
-      `${singledata.index} bullet${singledata.index} rmv garbage`
+    span.setAttribute('class',`${singledata.index} bullet${singledata.index} rmv dots`);
+    garbage.setAttribute('class',`${singledata.index} bullet${singledata.index} rmv garbage`
     );
     span.innerHTML = '&#8285;';
     garbage.classList.add('show');
     licheckbox.setAttribute('type', 'checkbox');
     licheckbox.setAttribute('class', `${singledata.index} checkbox`);
     licheckbox.setAttribute('id', `${singledata.index}`);
-    inputelem.setAttribute(
-      'class',
-      `${singledata.index} bullet${singledata.index} inputfields inputbox`
-    );
+    inputelem.setAttribute('class',`${singledata.index} bullet${singledata.index} inputfields inputbox`);
     inputelem.setAttribute('type', 'text');
     inputelem.setAttribute('value', singledata.description);
     if (singledata.completed === true) {
@@ -56,16 +48,9 @@ document.addEventListener('click', (event) => {
     populateData();
   }
 
-  if (
-    event.target.classList.contains('dots') ||
-    event.target.classList.contains('inputfields')
-  ) {
-    document
-      .querySelector(`.${event.target.classList[1]}.garbage`)
-      .classList.remove('show');
-    document
-      .querySelector(`.${event.target.classList[1]}.dots`)
-      .classList.add('show');
+  if ( event.target.classList.contains('dots') || event.target.classList.contains('inputfields')) {
+    document.querySelector(`.${event.target.classList[1]}.garbage`).classList.remove('show');
+    document.querySelector(`.${event.target.classList[1]}.dots`).classList.add('show');
   }
 
   if (event.target.classList.contains('garbage')) {

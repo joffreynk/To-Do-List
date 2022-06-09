@@ -36,9 +36,7 @@ class Todo {
   }
 
   clearCompleted() {
-    this.setTodos(
-      this.todos.filter((singleTodo) => singleTodo.completed == false)
-    );
+    this.setTodos(this.todos.filter((singleTodo) => singleTodo.completed === false));
   }
 
   complete(index) {
