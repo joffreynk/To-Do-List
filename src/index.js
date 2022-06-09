@@ -4,6 +4,9 @@ import './index.css';
 let todo = new Todo();
 
 const populateData = () => {
+  if (localStorage.getItem('todo')) {
+    todo.setTodos(JSON.parse(localStorage.getItem('todo')));
+  }
   const data = todo.getTodos();
   const list = document.getElementById('list');
   list.innerHTML = '';
@@ -35,10 +38,14 @@ const populateData = () => {
   });
 };
 
+populateData();
+
 document.addEventListener('click', event =>{
   if (event.target.classList.contains('checkbox')) {
     todo.complete(Number(event.target.classList[0]));
+    localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
     populateData();
+    
   };
 
   if (event.target.classList.contains('dots')||event.target.classList.contains('inputfields')) {
@@ -48,11 +55,13 @@ document.addEventListener('click', event =>{
 
   if (event.target.classList.contains('garbage')) {
     todo.removeTodo(Number(event.target.classList[0]));
+    localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
     populateData();
   }
 
   if (event.target.classList.contains('clear-button')) {
     todo.clearCompleted();
+    localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
     populateData();
   }
 })
@@ -62,7 +71,12 @@ document.addEventListener('keypress', event =>{
      if (event.target.classList.contains('newtodo')){
       todo.addTodo(event.target.value);
       event.target.value = '';
+      localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
       populateData();
+      console.log('====================================');
+      console.log(todo.getTodos());
+      console.log('====================================');
+      console.log(localStorage.getItem('todo'));
   }
 
   if (event.target.classList.contains('inputfields')) {
@@ -70,6 +84,7 @@ document.addEventListener('keypress', event =>{
     console.log('target index', event.target.classList[0]);
     console.log('value', event.target.value);
     populateData();
+    localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
   }
   }
 });

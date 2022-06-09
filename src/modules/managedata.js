@@ -23,7 +23,7 @@ class Todo {
   }
 
   editTodo(index, description){
-    this.todos.map((singleTodo) => {
+    this.todos = this.todos.map((singleTodo) => {
       if(singleTodo.index===index){
         singleTodo.description = description;
       }
@@ -36,7 +36,7 @@ class Todo {
   }
 
   complete(index){
-    this.todos.map((singleTodo) => {
+    this.todos = this.todos.map((singleTodo) => {
       if(singleTodo.index===index){
         singleTodo.completed = !singleTodo.completed;
       }
@@ -51,6 +51,7 @@ class Todo {
   setTodos (newTodoes) {
     this.todos = newTodoes;
   }
+
 }
 
 export default Todo;
