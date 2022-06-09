@@ -36,13 +36,21 @@ li {
   cursor: default;
 }
 
-input.checkbox {
+.checkbox {
   width: 30px;
   height: 30px;
 }
 
-.dots {
-  font-size: 60px;
+.rmv {
+  font-size: 45px;
+  cursor: pointer;
+  width: 60px;
+  height: 45px;
+  text-align: center;
+}
+
+.garbage {
+  font-size: 30px;
   cursor: move;
 }
 
@@ -73,4 +81,8 @@ input.checkbox {
   margin: 0;
   padding: 0;
   cursor: pointer;
+}
+
+.show {
+  display: none;
 }

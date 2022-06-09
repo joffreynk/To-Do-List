@@ -4,6 +4,8 @@
 
 To do project is webpack project that list activities someone can do at a specific time 
 
+In this TO-DO list, you can add or remove you activities you can block completed activities if theyy are any and you can remove all completed activities at once
+
 ## Built With:
 
 - HTML
