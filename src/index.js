@@ -1,7 +1,7 @@
-import Todo from './modules/managedata.js'
+import Todo from './modules/managedata.js';
 import './index.css';
 
-let todo = new Todo();
+const todo = new Todo();
 
 const populateData = () => {
   if (localStorage.getItem('todo')) {
@@ -17,18 +17,27 @@ const populateData = () => {
     const span = document.createElement('span');
     const garbage = document.createElement('span');
     garbage.innerHTML = '&#128465;&#65039;';
-    span.setAttribute('class', `${singledata.index} bullet${singledata.index} rmv dots`);
-    garbage.setAttribute('class', `${singledata.index} bullet${singledata.index} rmv garbage`);
+    span.setAttribute(
+      'class',
+      `${singledata.index} bullet${singledata.index} rmv dots`
+    );
+    garbage.setAttribute(
+      'class',
+      `${singledata.index} bullet${singledata.index} rmv garbage`
+    );
     span.innerHTML = '&#8285;';
     garbage.classList.add('show');
     licheckbox.setAttribute('type', 'checkbox');
     licheckbox.setAttribute('class', `${singledata.index} checkbox`);
     licheckbox.setAttribute('id', `${singledata.index}`);
-    inputelem.setAttribute('class', `${singledata.index} bullet${singledata.index} inputfields inputbox`);
+    inputelem.setAttribute(
+      'class',
+      `${singledata.index} bullet${singledata.index} inputfields inputbox`
+    );
     inputelem.setAttribute('type', 'text');
     inputelem.setAttribute('value', singledata.description);
-    if (singledata.completed===true){
-    inputelem.classList.toggle('completed');
+    if (singledata.completed === true) {
+      inputelem.classList.toggle('completed');
     }
     li.appendChild(licheckbox);
     li.appendChild(inputelem);
@@ -40,17 +49,23 @@ const populateData = () => {
 
 populateData();
 
-document.addEventListener('click', event =>{
+document.addEventListener('click', (event) => {
   if (event.target.classList.contains('checkbox')) {
     todo.complete(Number(event.target.classList[0]));
     localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
     populateData();
-    
-  };
+  }
 
-  if (event.target.classList.contains('dots')||event.target.classList.contains('inputfields')) {
-    document.querySelector(`.${event.target.classList[1]}.garbage`).classList.remove('show');
-    document.querySelector(`.${event.target.classList[1]}.dots`).classList.add('show');
+  if (
+    event.target.classList.contains('dots') ||
+    event.target.classList.contains('inputfields')
+  ) {
+    document
+      .querySelector(`.${event.target.classList[1]}.garbage`)
+      .classList.remove('show');
+    document
+      .querySelector(`.${event.target.classList[1]}.dots`)
+      .classList.add('show');
   }
 
   if (event.target.classList.contains('garbage')) {
@@ -64,27 +79,21 @@ document.addEventListener('click', event =>{
     localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
     populateData();
   }
-})
+});
 
-document.addEventListener('keypress', event =>{
-  if (event.which === 13){
-     if (event.target.classList.contains('newtodo')){
+document.addEventListener('keypress', (event) => {
+  if (event.which === 13) {
+    if (event.target.classList.contains('newtodo')) {
       todo.addTodo(event.target.value);
       event.target.value = '';
       localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
       populateData();
-      console.log('====================================');
-      console.log(todo.getTodos());
-      console.log('====================================');
-      console.log(localStorage.getItem('todo'));
-  }
+    }
 
-  if (event.target.classList.contains('inputfields')) {
-    todo.editTodo(Number(event.target.classList[0]), event.target.value);
-    console.log('target index', event.target.classList[0]);
-    console.log('value', event.target.value);
-    populateData();
-    localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
-  }
+    if (event.target.classList.contains('inputfields')) {
+      todo.editTodo(Number(event.target.classList[0]), event.target.value);
+      populateData();
+      localStorage.setItem('todo', JSON.stringify(todo.getTodos()));
+    }
   }
 });
