@@ -37,6 +37,17 @@ class Todo {
 
   clearCompleted() {
     this.setTodos(this.todos.filter((singleTodo) => singleTodo.completed === false));
+    const helpertodos = [];
+    let helpertodo;
+    this.todos.forEach((singleTodo) => {
+      helpertodo = {
+        index: helpertodos.length + 1,
+        completed: singleTodo.completed,
+        description: singleTodo.description,
+      };
+      helpertodos.push(helpertodo);
+    });
+    this.todos = helpertodos;
   }
 
   complete(index) {
