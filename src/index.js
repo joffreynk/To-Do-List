@@ -1,4 +1,4 @@
-import Todo from './modules/managedata.js';
+const Todo = require('./modules/managedata.js');
 import './index.css';
 
 const todo = new Todo();

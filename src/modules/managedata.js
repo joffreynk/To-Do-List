@@ -13,6 +13,9 @@ class Todo {
   }
 
   removeTodo(index) {
+    if (index > this.todos.length) {
+      return;
+    }
     this.todos = this.todos.filter((singleTodo) => singleTodo.index !== index);
     const helpertodos = [];
     let helpertodo;
