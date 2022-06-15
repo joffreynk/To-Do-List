@@ -9,6 +9,7 @@ class Todo {
       completed: false,
       description,
     });
+    return this.todos;
   }
 
   removeTodo(index) {
@@ -24,6 +25,7 @@ class Todo {
       helpertodos.push(helpertodo);
     });
     this.todos = helpertodos;
+    return this.todos;
   }
 
   editTodo(index, description) {
@@ -68,4 +70,5 @@ class Todo {
   }
 }
 
-export default Todo;
+//export default Todo;
+module.exports = Todo;
