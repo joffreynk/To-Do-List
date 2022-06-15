@@ -14,7 +14,7 @@ class Todo {
 
   removeTodo(index) {
     if (index > this.todos.length) {
-      return;
+      return null;
     }
     this.todos = this.todos.filter((singleTodo) => singleTodo.index !== index);
     const helpertodos = [];
@@ -73,5 +73,4 @@ class Todo {
   }
 }
 
-//export default Todo;
 module.exports = Todo;

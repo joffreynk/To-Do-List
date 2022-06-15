@@ -1,5 +1,6 @@
-const Todo = require('./modules/managedata.js');
 import './index.css';
+
+const Todo = require('./modules/managedata.js');
 
 const todo = new Todo();
 
