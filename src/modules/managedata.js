@@ -38,6 +38,7 @@ class Todo {
       }
       return singleTodo;
     });
+    return this.todos;
   }
 
   clearCompleted() {
@@ -53,6 +54,7 @@ class Todo {
       helpertodos.push(helpertodo);
     });
     this.todos = helpertodos;
+    return this.todos;
   }
 
   complete(index) {
@@ -62,6 +64,7 @@ class Todo {
       }
       return singleTodo;
     });
+    return this.todos;
   }
 
   getTodos() {
