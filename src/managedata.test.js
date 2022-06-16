@@ -29,7 +29,7 @@ describe('Add and Remove test functionality', () => {
   });
 });
 
-describe ('test for editing, changing status and clearing completed tasks', () => {
+describe('test for editing, changing status and clearing completed tasks', () => {
   test('Edit Test functionality', () => {
     expect(todosTest.editTodo(1, 'Task edited')).toEqual(todosTest.getTodos());
   });
